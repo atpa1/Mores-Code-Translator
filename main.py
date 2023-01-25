@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, redirect
-from tkinter import *
-from tkinter import messagebox
 app = Flask(__name__)
 MORSE_CODE_DICT = {'A': '.-', 'B': '-...',
                    'C': '-.-.', 'D': '-..', 'E': '.',
@@ -19,13 +17,6 @@ MORSE_CODE_DICT = {'A': '.-', 'B': '-...',
                    '(': '-.--.', ')': '-.--.-', " ": "/"}
 
 
-def error_message():
-    win = Tk()
-    messagebox.showerror(title='Error', message="Invalid character, please type in english")
-    # b = Button(win, text="Close", command=error_message)
-    # b.pack(pady=20)
-    win.mainloop()
-
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -35,9 +26,7 @@ def main():
             mores_code = " ".join(MORSE_CODE_DICT[i] for i in message.upper())
             return render_template('index.html', output=mores_code, input=message)
     except KeyError:
-        error_message()
-        return redirect("url_for('main')")
-        # return render_template('index.html', error="Invalid character, please type in english")
+        return render_template('index.html', error="Invalid character, please type in english")
     return render_template('index.html')
 
 
