@@ -26,7 +26,7 @@ def main():
             mores_code = " ".join(MORSE_CODE_DICT[i] for i in message.upper())
             return render_template('index.html', output=mores_code, input=message)
     except KeyError:
-        return render_template('index.html', error="Invalid character, please type in english")
+        return render_template('index.html', error="Invalid character detected!")
     return render_template('index.html')
 
 
