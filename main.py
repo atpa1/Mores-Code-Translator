@@ -17,7 +17,6 @@ MORSE_CODE_DICT = {'A': '.-', 'B': '-...',
                    '(': '-.--.', ')': '-.--.-', " ": "/"}
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def main():
     try:
